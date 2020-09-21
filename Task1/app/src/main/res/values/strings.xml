@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Task1</string>
+    <string name="first_name">Kevin</string>
+    <string name="last_name">Helgeland</string>
+    <string name="title">Tap on the names!</string>
+    <string name="lnCount">0</string>
+    <string name="fnCount">0</string>
+</resources>

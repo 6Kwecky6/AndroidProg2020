@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Task2.2</string>
+    <string name="adder">Adder</string>
+    <string name="multi">Multipliser</string>
+    <string name="answer">Svar:</string>
+    <string name="max">Øvre grense:</string>
+    <string name="correct">Riktig!</string>
+    <string name="fail">Feil. Riktig svar er </string>
+    <string name="first_num">3</string>
+    <string name="second_num">5</string>
+    <string name="given_answer">8</string>
+    <string name="upper_limit">10</string>
+</resources>

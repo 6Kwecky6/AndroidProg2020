@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PhotoAlbum</string>
+
+    <string name="friend_picture_description">Picture of two friends laying with their backs on the trunk of an old car.</string>
+    <string name="dog_picture_description">Picture of a dog staring vigilantly somewhere. </string>
+    <string name="mountain_view_picture_description">Picture of the view from a mountain down to a gorge.</string>
+    <string name="cat_dog_picture_description">Picture of a cat giving a dog a hug.</string>
+
+    <string name="back_scroll_button_title">Back</string>
+    <string name="forward_scroll_button_title">Forward</string>
+    <string name="image_listView_title">Swipe up/down to scroll between images</string>
+    <string name="no_image_found_description">No images were found, sorry</string>
+
+    <string-array name="picture_title_list">
+        <item>Guard dog</item>
+        <item>mountain view</item>
+        <item>Cat and dog</item>
+        <item>friends</item>
+    </string-array>
+</resources>

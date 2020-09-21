@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Friend_List</string>
+    <string name="edit_button_text">Edit</string>
+    <string name="first_name_descriptor_text">First name:</string>
+    <string name="first_name_edit_hint">First name</string>
+    <string name="last_name_descriptor_text">Last name:</string>
+    <string name="last_name_edit_hint">Last name</string>
+    <string name="birth_date_descriptor_text">Birth date:</string>
+    <string name="birth_date_edit_hint">Birth date</string>
+    <string name="default_string">Please select a friend you want to view</string>
+    <string name="add_friend_button_text">Add friend</string>
+    <string name="save_button_text">Save</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="edit_header">Please enter the friend information</string>
+
+    <string-array name="friend_name_list"/>
+</resources>
