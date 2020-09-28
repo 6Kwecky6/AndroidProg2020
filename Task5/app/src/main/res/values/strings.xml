@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Guess the number!!</string>
+
+    <!-- Strings that are going to be in the main activity-->
+    <string name="register_header">Registration</string>
+    <string name="user_name_text">Enter your name here:</string>
+    <string name="user_name_editable">Username</string>
+    <string name="card_number_text">Enter your card number here:</string>
+    <string name="card_number_editable">0123 4567 8910 0000</string>
+    <string name="game_start_button">Start!</string>
+
+    <!-- String resources for the game fragment -->
+    <string name="game_ongoing_header">Game is on!</string>
+    <string name="rules_text">
+        This is a simple game where you are going to guess a number between 1 and 10.
+        You get three attempts, and if you miss, we will tell you if it\'s less or more than your guess.
+    </string>
+    <string name="input_choice">1–10</string>
+    <string name="exit_button">Exit</string>
+    <string name="send_button">Send</string>
+</resources>
