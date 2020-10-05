@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="@+id/NoC_text_head" />
 
     <TextView
-        android:id="@+id/Number1"
+        android:id="@+id/number1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -53,9 +53,9 @@
         android:layout_height="wrap_content"
         android:tag="input"
         android:text="+"
-        app:layout_constraintBottom_toBottomOf="@+id/Number1"
-        app:layout_constraintStart_toEndOf="@+id/Number1"
-        app:layout_constraintTop_toTopOf="@+id/Number1" />
+        app:layout_constraintBottom_toBottomOf="@+id/number1"
+        app:layout_constraintStart_toEndOf="@+id/number1"
+        app:layout_constraintTop_toTopOf="@+id/number1" />
 
     <TextView
         android:id="@+id/number2"
@@ -63,9 +63,9 @@
         android:layout_height="wrap_content"
         android:tag="input"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/Number1"
+        app:layout_constraintBottom_toBottomOf="@+id/number1"
         app:layout_constraintStart_toEndOf="@+id/pluss"
-        app:layout_constraintTop_toTopOf="@+id/Number1"
+        app:layout_constraintTop_toTopOf="@+id/number1"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toTopOf="@+id/number2" />
 
     <TextView
-        android:id="@+id/answer"
+        android:id="@+id/server_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:tag="input"

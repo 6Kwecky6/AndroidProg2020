@@ -1,10 +1,13 @@
 package com.example.task6;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
 import android.net.wifi.WifiManager;
+import android.text.format.Formatter;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +15,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+
+import static android.content.Context.WIFI_SERVICE;
 
 public class ServerThread extends Thread{
     private final static String TAG = "ServerThread";
@@ -23,9 +28,15 @@ public class ServerThread extends Thread{
     private Socket s = null;
     private PrintWriter out=null;
     private BufferedReader in=null;
+    private TextView number1,number2,answer;
+    private String[] numbers;
+    private int added;
 
-    ServerThread(Context _context){
+    ServerThread(Context _context, TextView number1,TextView number2, TextView answer){
         context=_context;
+        this.number1=number1;
+        this.number2=number2;
+        this.answer=answer;
     }
 
     @Override
@@ -40,19 +51,23 @@ public class ServerThread extends Thread{
             Log.i(TAG,"start server....");
             ss=new ServerSocket(0);//Creates a random port.
             Log.i(TAG,"serversocket created, waiting for client...");
+            Log.d(TAG,"Port: "+ss.getLocalPort()+"\nHost address: "+ss.getLocalSocketAddress());
             registerService(ss.getLocalPort());
             s=ss.accept();
             Log.i(TAG,"Client connected...");
-            in=new BufferedReader(new InputStreamReader(s.getInputStream()));
-            inputConverter(in);
-            out = new PrintWriter(s.getOutputStream(),true);
-//            int[] res = inputConverter(in);
-//            out.println(res[0]+res[1]);
+            while(!isInterrupted()) {
+                in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                String response = in.readLine();
+                out = new PrintWriter(s.getOutputStream(), true);
+                int res = inputConverter(response);
+                out.println(res);
+            }
+
         }catch(IOException e){
             e.printStackTrace();
         }finally {
             try {
-                Log.d(TAG,"Destroying socket");//Dette skjer aldri..?
+                Log.d(TAG,"Destroying socket");
                 if(out!=null)out.close();
                 if(in!=null)in.close();
                 if(s!=null)s.close();
@@ -76,8 +91,35 @@ public class ServerThread extends Thread{
     }
 
     //Method to translate the bufferedReader to a list of two ints that are to be added together
-    private void inputConverter(BufferedReader inp)throws IOException{
-        System.out.println(inp.readLine());
+    private int inputConverter(String inp)throws IOException{
+        Log.d(TAG,"Input: "+inp);
+        numbers = inp.split(" ");
+        if(numbers[0]!=null&&numbers[1]!=null) {
+            number1.post(new Runnable() {
+                @Override
+                public void run() {
+                    number1.setText(numbers[0]);
+                }
+            });
+            number2.post(new Runnable() {
+                @Override
+                public void run() {
+                    number2.setText(numbers[1]);
+                }
+            });
+            Log.d(TAG,"Answer list: [0]: "+numbers[0]+" [1]: " + numbers[1]);
+            added = (Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]));
+            answer.post(new Runnable() {
+                @Override
+                public void run() {
+                    answer.setText(String.valueOf(added));
+                }
+            });
+            return added;
+        }else{
+            Log.e(TAG,"incorrect format");
+            return -1;
+        }
     }
 
     private void registerService(int port){
@@ -100,7 +142,7 @@ public class ServerThread extends Thread{
 
             @Override
             public void onUnregistrationFailed(NsdServiceInfo serviceInfo, int errorCode) {
-                Log.e(TAG,"Failed to unregister Nservice. Error code: "+errorCode);
+                Log.e(TAG,"Failed to unregister Nsdservice. Error code: "+errorCode);
             }
 
             @Override
@@ -118,3 +160,4 @@ public class ServerThread extends Thread{
     }
 
 }
+

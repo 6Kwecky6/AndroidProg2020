@@ -61,7 +61,7 @@
         app:layout_constraintTop_toTopOf="@+id/number2_inp" />
 
     <TextView
-        android:id="@+id/answer"
+        android:id="@+id/client_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

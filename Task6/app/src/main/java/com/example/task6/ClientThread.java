@@ -5,6 +5,7 @@ import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
 import android.nfc.Tag;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,17 +23,23 @@ public class ClientThread extends Thread{
     private PrintWriter out = null;
     private BufferedReader in=null;
     private Socket s=null;
+    private TextView answer;
+    private String res;
 
-    ClientThread(Context _context){
+    ClientThread(Context _context, TextView _answer){
+        answer=_answer;
         context=_context;
         nsdManager = (NsdManager)context.getSystemService(Context.NSD_SERVICE);
+        connect();
     }
 
     @Override
     public void run(){
-
-        initDiscoveryListener();
         nsdManager.discoverServices("_addition._tcp.",NsdManager.PROTOCOL_DNS_SD,discoveryListener);
+    }
+
+    public void connect(){
+        initDiscoveryListener();
     }
 
     //Strings should come in the syntax of "[int] [int]"
@@ -93,12 +100,20 @@ public class ClientThread extends Thread{
                                     Log.d(TAG,"Service resolve serviceInfo: "+serviceInfo);
                                     s=new Socket(serverInfo.getHost(),serverInfo.getPort());
                                     Log.i(TAG,"Connected to server");
-                                    out=new PrintWriter(s.getOutputStream(),true);
-                                    in=new BufferedReader(new InputStreamReader(s.getInputStream()));
+                                    while(!isInterrupted()) {
+                                        out = new PrintWriter(s.getOutputStream(), true);
 
-                                    String res =in.readLine();
-                                    Log.i(TAG,res);
+                                        in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                                        res = in.readLine();
+                                        Log.i(TAG, "Response from server: " + res);
 
+                                        answer.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                answer.setText(res);
+                                            }
+                                        });
+                                    }
                                 }catch(IOException e){
                                     e.printStackTrace();
                                 }finally{
