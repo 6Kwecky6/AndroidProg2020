@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ServerActivity">
+
+    <TextView
+        android:id="@+id/server_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/server_header_text"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/NoC_text_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/number_of_client_header_text"
+        app:layout_constraintStart_toStartOf="@+id/server_header"
+        app:layout_constraintTop_toBottomOf="@+id/server_header" />
+
+    <TextView
+        android:id="@+id/client_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/noc_counter_default"
+        app:layout_constraintBottom_toBottomOf="@+id/NoC_text_head"
+        app:layout_constraintStart_toEndOf="@+id/NoC_text_head"
+        app:layout_constraintTop_toTopOf="@+id/NoC_text_head" />
+
+    <TextView
+        android:id="@+id/Number1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:tag="input"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/NoC_text_head"
+        app:layout_constraintTop_toBottomOf="@+id/NoC_text_head" />
+
+    <TextView
+        android:id="@+id/pluss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="input"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="@+id/Number1"
+        app:layout_constraintStart_toEndOf="@+id/Number1"
+        app:layout_constraintTop_toTopOf="@+id/Number1" />
+
+    <TextView
+        android:id="@+id/number2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="input"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/Number1"
+        app:layout_constraintStart_toEndOf="@+id/pluss"
+        app:layout_constraintTop_toTopOf="@+id/Number1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/equals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="input"
+        android:text="="
+        app:layout_constraintBottom_toBottomOf="@+id/number2"
+        app:layout_constraintStart_toEndOf="@+id/number2"
+        app:layout_constraintTop_toTopOf="@+id/number2" />
+
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="input"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/number2"
+        app:layout_constraintStart_toEndOf="@+id/equals"
+        app:layout_constraintTop_toTopOf="@+id/number2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

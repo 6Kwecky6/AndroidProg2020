@@ -1,0 +1,20 @@
+<resources>
+    <!-- Main activity resources-->
+    <string name="app_name">Task6</string>
+    <string name="introduction_text">
+        Hello!\nAre we running server or client this instance?
+    </string>
+    <string name="server_selection_text">Server</string>
+    <string name="client_selection_text">Client</string>
+
+    <!-- Server activity resources-->
+    <string name="title_activity_server">ServerActivity</string>
+    <string name="server_header_text">This instance is now running as a server</string>
+    <string name="number_of_client_header_text">The amount of clients currently connected:</string>
+    <string name="noc_counter_default">None currently registered</string>
+
+    <!--Client activity resources-->
+    <string name="client_header_text">This instance is now running as a client</string>
+    <string name="send_button_text">Send</string>
+    <string name="input_hint">Number</string>
+</resources>
